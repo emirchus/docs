@@ -41,7 +41,7 @@
       ]
     },
     {
-      "group": "WSFEV1",
+      "group": "Facturación",
       "pages": [
         "api-reference/wsfev1/FECAESolicitar",
         "api-reference/wsfev1/FECompTotXRequest",
