@@ -1,51 +1,28 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "AFIP Servicios",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#242c4f",
+    "light": "#6979f2",
+    "dark": "#242c4f",
+    "background": {
+      "dark": "#010309",
+      "light": "#f6f7fe"
+    },
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#1439e0",
+      "to": "#1439e0"
     }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
   },
   "tabs": [
     {
       "name": "API Reference",
       "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
     }
   ],
   "navigation": [
@@ -58,34 +35,39 @@
       ]
     },
     {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "WSFEV1",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/wsfev1/FECAESolicitar",
+        "api-reference/wsfev1/FECompTotXRequest",
+        "api-reference/wsfev1/FEDummy",
+        "api-reference/wsfev1/FECompUltimoAutorizado",
+        "api-reference/wsfev1/FECompConsultar",
+        "api-reference/wsfev1/FECAEARegInformativo",
+        "api-reference/wsfev1/FECAEASolicitar",
+        "api-reference/wsfev1/FECAEASinMovimientoConsultar",
+        "api-reference/wsfev1/FECAEASinMovimientoInformar",
+        "api-reference/wsfev1/FECAEAConsultar",
+        "api-reference/wsfev1/FEParamGetCotizacion",
+        "api-reference/wsfev1/FEParamGetTiposTributos",
+        "api-reference/wsfev1/FEParamGetTiposMonedas",
+        "api-reference/wsfev1/FEParamGetTiposIva",
+        "api-reference/wsfev1/FEParamGetTiposOpcional",
+        "api-reference/wsfev1/FEParamGetTiposConcepto",
+        "api-reference/wsfev1/FEParamGetPtosVenta",
+        "api-reference/wsfev1/FEParamGetTiposCbte",
+        "api-reference/wsfev1/FEParamGetTiposDoc",
+        "api-reference/wsfev1/FEParamGetTiposPaises",
+        "api-reference/wsfev1/FEParamGetActividades"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "github": "https://github.com/sarriaroman/AFIP-API"
   }
 }

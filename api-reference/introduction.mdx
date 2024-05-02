@@ -1,33 +1,43 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Introducción'
+description: 'Bienvenido a la documentación de la API de la AFIP'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Inicio
 
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+La función principal de este API es simplificar el acceso a los WebServices de AFIP y principalmente Factura Electrónica.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title="AFIP WS"
+  icon="share-from-square"
+  href="http://www.afip.gob.ar/ws"
 >
-  View the OpenAPI specification file
+  Para generar los certificados y darse de alta en el Servicio de Homologación (Pruebas)
 </Card>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
+Para utilizar cualquiera de los métodos disponibles en el presente WS es necesario un Ticket de
+Acceso provisto por el WS de Autenticación y Autorización (WSAA).
+Recordar que para consumir el WS de Autenticación y Autorización WSAA es necesario obtener
+previamente un certificado digital desde clave fiscal y asociarlo al ws de negocio "Facturación
+Electrónica".
+Al momento de solicitar un Ticket de Acceso por medio del WS de Autenticación y Autorización
+WSAA tener en cuenta que debe enviar el tag service (por ejemplo "wsfe") y que la duración del mismo es de 12 hs.
+Para más información deberá redirigirse a los manuales [AFIP WS](https://afip.gob.ar/ws).
 ```json
-"security": [
-  {
-    "bearerAuth": []
+{
+	"auth": {
+		"key": "Auth",
+		"token": "Token",
+		"sign": "Sign"
+	},
+	"params": {
+		"Auth": {
+			"Cuit": ********,
+			"Token": "",
+			"Sign": ""
+		}
   }
-]
+}
 ```

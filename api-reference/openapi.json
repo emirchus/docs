@@ -10,63 +10,18 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
+      "url": "http://localhost:3000"
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
+    "/api/wsfev1/FECAESolicitar": {
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "<desc>",
         "requestBody": {
-          "description": "Plant to add to the store",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/FECAESolicitarBody"
               }
             }
           },
@@ -74,17 +29,17 @@
         },
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "<desc>",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/FECAESolicitarResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Error al solicitar CAE",
             "content": {
               "application/json": {
                 "schema": {
@@ -96,28 +51,735 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+    "/api/wsfev1/FECompTotXRequest": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECompTotXRequestBody"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECompTotXRequestResponse"
+                }
+              }
+            }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEDummy": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEDummyBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEDummyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FECompUltimoAutorizado": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECompUltimoAutorizadoBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECompUltimoAutorizadoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FECompConsultar": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECompConsultarBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECompConsultarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FECAEARegInformativo": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECAEARegInformativoBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECAEARegInformativoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FECAEASolicitar": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECAEASolicitarBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECAEASolicitarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FECAEASinMovimientoConsultar": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECAEASinMovimientoConsultarBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECAEASinMovimientoConsultarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FECAEASinMovimientoInformar": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECAEASinMovimientoInformarBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECAEASinMovimientoInformarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FECAEAConsultar": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FECAEAConsultarBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FECAEAConsultarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetCotizacion": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetCotizacionBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetCotizacionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposTributos": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposTributosBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposTributosResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposMonedas": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposMonedasBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposMonedasResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposIva": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposIvaBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposIvaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposOpcional": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposOpcionalBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposOpcionalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposConcepto": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposConceptoBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposConceptoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetPtosVenta": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetPtosVentaBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetPtosVentaResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposCbte": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposCbteBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposCbteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposDoc": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposDocBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposDocResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetTiposPaises": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetTiposPaisesBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetTiposPaisesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wsfev1/FEParamGetActividades": {
+      "post": {
+        "description": "<desc>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FEParamGetActividadesBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<desc>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FEParamGetActividadesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al solicitar CAE",
             "content": {
               "application/json": {
                 "schema": {
@@ -132,63 +794,2608 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "Error": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
+          "Errors": {
             "type": "object",
             "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "string"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Code",
+                    "Msg"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "Err"
+            ]
+          }
+        },
+        "required": [
+          "Errors"
+        ]
+      },
+      "FECAESolicitarBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "FeCAEReq": {
+            "type": "object",
+            "properties": {
+              "FeCabReq": {
+                "type": "object",
+                "properties": {
+                  "CantReg": {
+                    "type": "number"
+                  },
+                  "PtoVta": {
+                    "type": "number"
+                  },
+                  "CbteTipo": {
+                    "type": "number"
+                  }
+                }
+              },
+              "FeDetReq": {
+                "type": "object",
+                "properties": {
+                  "FECAEDetRequest": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Concepto": {
+                          "type": "number"
+                        },
+                        "DocTipo": {
+                          "type": "number"
+                        },
+                        "DocNro": {
+                          "type": "number"
+                        },
+                        "CbteDesde": {
+                          "type": "number"
+                        },
+                        "CbteHasta": {
+                          "type": "number"
+                        },
+                        "CbteFch": {
+                          "type": "string"
+                        },
+                        "ImpTotal": {
+                          "type": "number"
+                        },
+                        "ImpTotConc": {
+                          "type": "number"
+                        },
+                        "ImpNeto": {
+                          "type": "number"
+                        },
+                        "ImpOpEx": {
+                          "type": "number"
+                        },
+                        "ImpTrib": {
+                          "type": "number"
+                        },
+                        "ImpIVA": {
+                          "type": "number"
+                        },
+                        "FchServDesde": {
+                          "type": "string"
+                        },
+                        "FchServHasta": {
+                          "type": "string"
+                        },
+                        "FchVtoPago": {
+                          "type": "string"
+                        },
+                        "MonId": {
+                          "type": "string"
+                        },
+                        "MonCotiz": {
+                          "type": "number"
+                        },
+                        "CbtesAsoc": {
+                          "type": "object",
+                          "properties": {
+                            "CbteAsoc": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Tipo": {
+                                    "type": "number"
+                                  },
+                                  "PtoVta": {
+                                    "type": "number"
+                                  },
+                                  "Nro": {
+                                    "type": "number"
+                                  },
+                                  "Cuit": {
+                                    "type": "string"
+                                  },
+                                  "CbteFch": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Tributos": {
+                          "type": "object",
+                          "properties": {
+                            "Tributo": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "number"
+                                  },
+                                  "Desc": {
+                                    "type": "string"
+                                  },
+                                  "BaseImp": {
+                                    "type": "number"
+                                  },
+                                  "Alic": {
+                                    "type": "number"
+                                  },
+                                  "Importe": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Iva": {
+                          "type": "object",
+                          "properties": {
+                            "AlicIva": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "number"
+                                  },
+                                  "BaseImp": {
+                                    "type": "number"
+                                  },
+                                  "Importe": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Opcionales": {
+                          "type": "object",
+                          "properties": {
+                            "Opcional": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "string"
+                                  },
+                                  "Valor": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Compradores": {
+                          "type": "object",
+                          "properties": {
+                            "Comprador": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "DocTipo": {
+                                    "type": "number"
+                                  },
+                                  "DocNro": {
+                                    "type": "number"
+                                  },
+                                  "Porcentaje": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "PeriodoAsoc": {
+                          "type": "object",
+                          "properties": {
+                            "FchDesde": {
+                              "type": "string"
+                            },
+                            "FchHasta": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "Actividades": {
+                          "type": "object",
+                          "properties": {
+                            "Actividad": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
-        ]
+        }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "FECAESolicitarResponse": {
         "type": "object",
         "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
+          "FeCabResp": {
+            "type": "object",
+            "properties": {
+              "Cuit": {
+                "type": "number"
+              },
+              "PtoVta": {
+                "type": "number"
+              },
+              "CbteTipo": {
+                "type": "number"
+              },
+              "FchProceso": {
+                "type": "string"
+              },
+              "CantReg": {
+                "type": "number"
+              },
+              "Resultado": {
+                "type": "string"
+              },
+              "Reproceso": {
+                "type": "string"
+              }
+            }
           },
-          "message": {
+          "FeDetResp": {
+            "type": "object",
+            "properties": {
+              "FECAEDetResponse": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Concepto": {
+                      "type": "number"
+                    },
+                    "DocTipo": {
+                      "type": "number"
+                    },
+                    "DocNro": {
+                      "type": "number"
+                    },
+                    "CbteDesde": {
+                      "type": "number"
+                    },
+                    "CbteHasta": {
+                      "type": "number"
+                    },
+                    "CbteFch": {
+                      "type": "string"
+                    },
+                    "Resultado": {
+                      "type": "string"
+                    },
+                    "Observaciones": {
+                      "type": "object",
+                      "properties": {
+                        "Obs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Code": {
+                                "type": "number"
+                              },
+                              "Msg": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "CAE": {
+                      "type": "string"
+                    },
+                    "CAEFchVto": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECompTotXRequestBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FECompTotXRequestResponse": {
+        "type": "object",
+        "properties": {
+          "RegXReq": {
+            "type": "number"
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEDummyBody": {
+        "type": "object",
+        "properties": {}
+      },
+      "FEDummyResponse": {
+        "type": "object",
+        "properties": {
+          "AppServer": {
+            "type": "string"
+          },
+          "DbServer": {
+            "type": "string"
+          },
+          "AuthServer": {
             "type": "string"
           }
         }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      },
+      "FECompUltimoAutorizadoBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "PtoVta": {
+            "type": "number"
+          },
+          "CbteTipo": {
+            "type": "number"
+          }
+        }
+      },
+      "FECompUltimoAutorizadoResponse": {
+        "type": "object",
+        "properties": {
+          "PtoVta": {
+            "type": "number"
+          },
+          "CbteTipo": {
+            "type": "number"
+          },
+          "CbteNro": {
+            "type": "number"
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECompConsultarBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "FeCompConsReq": {
+            "type": "object",
+            "properties": {
+              "CbteTipo": {
+                "type": "number"
+              },
+              "CbteNro": {
+                "type": "number"
+              },
+              "PtoVta": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FECompConsultarResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "Concepto": {
+                "type": "number"
+              },
+              "DocTipo": {
+                "type": "number"
+              },
+              "DocNro": {
+                "type": "number"
+              },
+              "CbteDesde": {
+                "type": "number"
+              },
+              "CbteHasta": {
+                "type": "number"
+              },
+              "CbteFch": {
+                "type": "string"
+              },
+              "ImpTotal": {
+                "type": "number"
+              },
+              "ImpTotConc": {
+                "type": "number"
+              },
+              "ImpNeto": {
+                "type": "number"
+              },
+              "ImpOpEx": {
+                "type": "number"
+              },
+              "ImpTrib": {
+                "type": "number"
+              },
+              "ImpIVA": {
+                "type": "number"
+              },
+              "FchServDesde": {
+                "type": "string"
+              },
+              "FchServHasta": {
+                "type": "string"
+              },
+              "FchVtoPago": {
+                "type": "string"
+              },
+              "MonId": {
+                "type": "string"
+              },
+              "MonCotiz": {
+                "type": "number"
+              },
+              "CbtesAsoc": {
+                "type": "object",
+                "properties": {
+                  "CbteAsoc": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Tipo": {
+                          "type": "number"
+                        },
+                        "PtoVta": {
+                          "type": "number"
+                        },
+                        "Nro": {
+                          "type": "number"
+                        },
+                        "Cuit": {
+                          "type": "string"
+                        },
+                        "CbteFch": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Tributos": {
+                "type": "object",
+                "properties": {
+                  "Tributo": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Id": {
+                          "type": "number"
+                        },
+                        "Desc": {
+                          "type": "string"
+                        },
+                        "BaseImp": {
+                          "type": "number"
+                        },
+                        "Alic": {
+                          "type": "number"
+                        },
+                        "Importe": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Iva": {
+                "type": "object",
+                "properties": {
+                  "AlicIva": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Id": {
+                          "type": "number"
+                        },
+                        "BaseImp": {
+                          "type": "number"
+                        },
+                        "Importe": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Opcionales": {
+                "type": "object",
+                "properties": {
+                  "Opcional": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Id": {
+                          "type": "string"
+                        },
+                        "Valor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Compradores": {
+                "type": "object",
+                "properties": {
+                  "Comprador": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "DocTipo": {
+                          "type": "number"
+                        },
+                        "DocNro": {
+                          "type": "number"
+                        },
+                        "Porcentaje": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "PeriodoAsoc": {
+                "type": "object",
+                "properties": {
+                  "FchDesde": {
+                    "type": "string"
+                  },
+                  "FchHasta": {
+                    "type": "string"
+                  }
+                }
+              },
+              "Actividades": {
+                "type": "object",
+                "properties": {
+                  "Actividad": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Id": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Resultado": {
+                "type": "string"
+              },
+              "CodAutorizacion": {
+                "type": "string"
+              },
+              "EmisionTipo": {
+                "type": "string"
+              },
+              "FchVto": {
+                "type": "string"
+              },
+              "FchProceso": {
+                "type": "string"
+              },
+              "Observaciones": {
+                "type": "object",
+                "properties": {
+                  "Obs": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Code": {
+                          "type": "number"
+                        },
+                        "Msg": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "PtoVta": {
+                "type": "number"
+              },
+              "CbteTipo": {
+                "type": "number"
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECAEARegInformativoBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "FeCAEARegInfReq": {
+            "type": "object",
+            "properties": {
+              "FeCabReq": {
+                "type": "object",
+                "properties": {
+                  "CantReg": {
+                    "type": "number"
+                  },
+                  "PtoVta": {
+                    "type": "number"
+                  },
+                  "CbteTipo": {
+                    "type": "number"
+                  }
+                }
+              },
+              "FeDetReq": {
+                "type": "object",
+                "properties": {
+                  "FECAEADetRequest": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Concepto": {
+                          "type": "number"
+                        },
+                        "DocTipo": {
+                          "type": "number"
+                        },
+                        "DocNro": {
+                          "type": "number"
+                        },
+                        "CbteDesde": {
+                          "type": "number"
+                        },
+                        "CbteHasta": {
+                          "type": "number"
+                        },
+                        "CbteFch": {
+                          "type": "string"
+                        },
+                        "ImpTotal": {
+                          "type": "number"
+                        },
+                        "ImpTotConc": {
+                          "type": "number"
+                        },
+                        "ImpNeto": {
+                          "type": "number"
+                        },
+                        "ImpOpEx": {
+                          "type": "number"
+                        },
+                        "ImpTrib": {
+                          "type": "number"
+                        },
+                        "ImpIVA": {
+                          "type": "number"
+                        },
+                        "FchServDesde": {
+                          "type": "string"
+                        },
+                        "FchServHasta": {
+                          "type": "string"
+                        },
+                        "FchVtoPago": {
+                          "type": "string"
+                        },
+                        "MonId": {
+                          "type": "string"
+                        },
+                        "MonCotiz": {
+                          "type": "number"
+                        },
+                        "CbtesAsoc": {
+                          "type": "object",
+                          "properties": {
+                            "CbteAsoc": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Tipo": {
+                                    "type": "number"
+                                  },
+                                  "PtoVta": {
+                                    "type": "number"
+                                  },
+                                  "Nro": {
+                                    "type": "number"
+                                  },
+                                  "Cuit": {
+                                    "type": "string"
+                                  },
+                                  "CbteFch": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Tributos": {
+                          "type": "object",
+                          "properties": {
+                            "Tributo": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "number"
+                                  },
+                                  "Desc": {
+                                    "type": "string"
+                                  },
+                                  "BaseImp": {
+                                    "type": "number"
+                                  },
+                                  "Alic": {
+                                    "type": "number"
+                                  },
+                                  "Importe": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Iva": {
+                          "type": "object",
+                          "properties": {
+                            "AlicIva": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "number"
+                                  },
+                                  "BaseImp": {
+                                    "type": "number"
+                                  },
+                                  "Importe": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Opcionales": {
+                          "type": "object",
+                          "properties": {
+                            "Opcional": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "string"
+                                  },
+                                  "Valor": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Compradores": {
+                          "type": "object",
+                          "properties": {
+                            "Comprador": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "DocTipo": {
+                                    "type": "number"
+                                  },
+                                  "DocNro": {
+                                    "type": "number"
+                                  },
+                                  "Porcentaje": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "PeriodoAsoc": {
+                          "type": "object",
+                          "properties": {
+                            "FchDesde": {
+                              "type": "string"
+                            },
+                            "FchHasta": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "Actividades": {
+                          "type": "object",
+                          "properties": {
+                            "Actividad": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "Id": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "CAEA": {
+                          "type": "string"
+                        },
+                        "CbteFchHsGen": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECAEARegInformativoResponse": {
+        "type": "object",
+        "properties": {
+          "FeCabResp": {
+            "type": "object",
+            "properties": {
+              "Cuit": {
+                "type": "number"
+              },
+              "PtoVta": {
+                "type": "number"
+              },
+              "CbteTipo": {
+                "type": "number"
+              },
+              "FchProceso": {
+                "type": "string"
+              },
+              "CantReg": {
+                "type": "number"
+              },
+              "Resultado": {
+                "type": "string"
+              },
+              "Reproceso": {
+                "type": "string"
+              }
+            }
+          },
+          "FeDetResp": {
+            "type": "object",
+            "properties": {
+              "FECAEADetResponse": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Concepto": {
+                      "type": "number"
+                    },
+                    "DocTipo": {
+                      "type": "number"
+                    },
+                    "DocNro": {
+                      "type": "number"
+                    },
+                    "CbteDesde": {
+                      "type": "number"
+                    },
+                    "CbteHasta": {
+                      "type": "number"
+                    },
+                    "CbteFch": {
+                      "type": "string"
+                    },
+                    "Resultado": {
+                      "type": "string"
+                    },
+                    "Observaciones": {
+                      "type": "object",
+                      "properties": {
+                        "Obs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Code": {
+                                "type": "number"
+                              },
+                              "Msg": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "CAEA": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECAEASolicitarBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "Periodo": {
+            "type": "number"
+          },
+          "Orden": {
+            "type": "number"
+          }
+        }
+      },
+      "FECAEASolicitarResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "CAEA": {
+                "type": "string"
+              },
+              "Periodo": {
+                "type": "number"
+              },
+              "Orden": {
+                "type": "number"
+              },
+              "FchVigDesde": {
+                "type": "string"
+              },
+              "FchVigHasta": {
+                "type": "string"
+              },
+              "FchTopeInf": {
+                "type": "string"
+              },
+              "FchProceso": {
+                "type": "string"
+              },
+              "Observaciones": {
+                "type": "object",
+                "properties": {
+                  "Obs": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Code": {
+                          "type": "number"
+                        },
+                        "Msg": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECAEASinMovimientoConsultarBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "CAEA": {
+            "type": "string"
+          },
+          "PtoVta": {
+            "type": "number"
+          }
+        }
+      },
+      "FECAEASinMovimientoConsultarResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "FECAEASinMov": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "CAEA": {
+                      "type": "string"
+                    },
+                    "FchProceso": {
+                      "type": "string"
+                    },
+                    "PtoVta": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECAEASinMovimientoInformarBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "PtoVta": {
+            "type": "number"
+          },
+          "CAEA": {
+            "type": "string"
+          }
+        }
+      },
+      "FECAEASinMovimientoInformarResponse": {
+        "type": "object",
+        "properties": {
+          "CAEA": {
+            "type": "string"
+          },
+          "FchProceso": {
+            "type": "string"
+          },
+          "PtoVta": {
+            "type": "number"
+          },
+          "Resultado": {
+            "type": "string"
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FECAEAConsultarBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "Periodo": {
+            "type": "number"
+          },
+          "Orden": {
+            "type": "number"
+          }
+        }
+      },
+      "FECAEAConsultarResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "CAEA": {
+                "type": "string"
+              },
+              "Periodo": {
+                "type": "number"
+              },
+              "Orden": {
+                "type": "number"
+              },
+              "FchVigDesde": {
+                "type": "string"
+              },
+              "FchVigHasta": {
+                "type": "string"
+              },
+              "FchTopeInf": {
+                "type": "string"
+              },
+              "FchProceso": {
+                "type": "string"
+              },
+              "Observaciones": {
+                "type": "object",
+                "properties": {
+                  "Obs": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Code": {
+                          "type": "number"
+                        },
+                        "Msg": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetCotizacionBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          },
+          "MonId": {
+            "type": "string"
+          }
+        }
+      },
+      "FEParamGetCotizacionResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "MonId": {
+                "type": "string"
+              },
+              "MonCotiz": {
+                "type": "number"
+              },
+              "FchCotiz": {
+                "type": "string"
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposTributosBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposTributosResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "TributoTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "number"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    },
+                    "FchDesde": {
+                      "type": "string"
+                    },
+                    "FchHasta": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposMonedasBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposMonedasResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "Moneda": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "string"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    },
+                    "FchDesde": {
+                      "type": "string"
+                    },
+                    "FchHasta": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposIvaBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposIvaResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "IvaTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "string"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    },
+                    "FchDesde": {
+                      "type": "string"
+                    },
+                    "FchHasta": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposOpcionalBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposOpcionalResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "OpcionalTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "string"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    },
+                    "FchDesde": {
+                      "type": "string"
+                    },
+                    "FchHasta": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposConceptoBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposConceptoResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "ConceptoTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "number"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    },
+                    "FchDesde": {
+                      "type": "string"
+                    },
+                    "FchHasta": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetPtosVentaBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetPtosVentaResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "PtoVenta": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Nro": {
+                      "type": "number"
+                    },
+                    "EmisionTipo": {
+                      "type": "string"
+                    },
+                    "Bloqueado": {
+                      "type": "string"
+                    },
+                    "FchBaja": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposCbteBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposCbteResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "CbteTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "number"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    },
+                    "FchDesde": {
+                      "type": "string"
+                    },
+                    "FchHasta": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposDocBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposDocResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "DocTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "number"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    },
+                    "FchDesde": {
+                      "type": "string"
+                    },
+                    "FchHasta": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposPaisesBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetTiposPaisesResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "PaisTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "number"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetActividadesBody": {
+        "type": "object",
+        "properties": {
+          "Auth": {
+            "type": "object",
+            "properties": {
+              "Token": {
+                "type": "string"
+              },
+              "Sign": {
+                "type": "string"
+              },
+              "Cuit": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "FEParamGetActividadesResponse": {
+        "type": "object",
+        "properties": {
+          "ResultGet": {
+            "type": "object",
+            "properties": {
+              "ActividadesTipo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "number"
+                    },
+                    "Orden": {
+                      "type": "number"
+                    },
+                    "Desc": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Errors": {
+            "type": "object",
+            "properties": {
+              "Err": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Events": {
+            "type": "object",
+            "properties": {
+              "Evt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "number"
+                    },
+                    "Msg": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
