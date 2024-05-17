@@ -1,86 +1,120 @@
 ---
 title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+description: 'Inicio rápido para comenzar a trabajar con los servicios de AFIP'
 ---
 
-## Setup your development
+## Setup
+Requisitos para comenzar a trabajar con los servicios de AFIP.
 
-Learn how to update your docs locally and and deploy them to the public.
-
-### Edit and preview
+### Certificado digital
 
 <AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
+  <Accordion icon="pager" title="Darse de alta">
+    <Steps>
+      <Step title="Ingresar a AFIP">
+        Para solicitar el servicio WSASS, el usuario debe acceder a [afip](www.afip.gob.ar) autenticándose con su
+        Clave Fiscal de persona física (no persona jurídica), con nivel de autorización 2 o superior.
+      </Step>
+      <Step title="Adherirse">
+      En la sección Mis Servicios pulsar en el link “Administrador de Relaciones” o en el cuadro “Administrador de Relaciones de Clave Fiscal”.
+      Link de ejemplo `https://serviciosweb.afip.gob.ar/ClaveFiscal/AdminRel/serviceSearch2.aspx?representado=TU-CUIL`.
+      Dónde `TU-CUIL` es el CUIL del usuario.
+
+      En el, tocar el cuadro de AFIP y después WebServices. Luego en el listado de servicios disponibles seleccionar “WSASS - Web Service de Autenticación y Autorización de Servicios”.
+      </Step>
+      <Step title="Confirmación">
+      Pulsar “Continuar” en el formulario “Incorporar nueva relación”. Se visualizará un mensaje de confirmación de la incorporación de la relación.
+      </Step>
+    </Steps>
+    <Info>Para más información se puede leer el siguiente documento [Cómo adherirse](https://www.afip.gob.ar/ws/WSASS/WSASS_como_adherirse.pdf)</Info>
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
+  <Accordion icon="github" title="Clonar repositorio">
+    Es necesario clonar el repositorio de [AFIP-API](https://github.com/sarriaroman/AFIP-API) para poder acceder a los servicios de AFIP.
+
+    ```bash
+    git clone git@github.com:sarriaroman/AFIP-API.git
+    ```
+  <Info>Para más información sobre cómo utilizar el proyecto, se puede consultar el archivo [README.md](https://github.com/sarriaroman/AFIP-API/blob/master/readme.md)</Info>
+  </Accordion>
+  <Accordion icon="signature" title="Creación de firmas">
+    Para trabajar con los servicios de la AFIP, es necesario crear una firma digital.
+
+    Desde la raíz del proyecto, se debe ejecutar el siguiente comando:
+
+    ```bash
+    ./tools/keygen.sh /C=AR/O=Nombre/CN=Nombre/serialNumber=CUIT 00000000000
+    ```
+    Donde `Nombre` es el nombre de la empresa y `00000000000` es el CUIT de la empresa/persona.
+
+    Una vez creado los archivos `afip.csr` y `afip.key`, se debe enviar el archivo `afip.csr` a la AFIP para que sea firmado.
+
+    Desde la página de homologación, ir a la opción de  “Nuevo Certificado” para acceder al formulario para crear un DN y el certificado inicialmente asociado al mismo.
+
+    Los campos a ingresar en el formulario son:
+    <Steps>
+      <Step title="Nombre simbólico del DN">
+        Es el alias o nombre simbólico del DN. Debe haberse creado previamente. Elegir el alias de la lista desplegable.
+      </Step>
+      <Step title="CUIT del DN">
+        Es la CUIT del DN seleccionado en el Campo 1.
+      </Step>
+      <Step title="Nueva solicitud de certificado en formato PKCS10">
+        Es la solicitud de certificado (Certificate Signing Request, CSR) en formato PKCS10. Se ignora el campo DN del CSR. Copiar y pegar en este campo el contenido del CSR generado anteriormente `afip.csr`.
+      </Step>
+    </Steps>
+
+
+    <Info>Para más información sobre ingresar las firmas, se puede consultar el manual [WSASS_manual.pdf](https://www.afip.gob.ar/ws/WSASS/WSASS_manual.pdf)</Info>
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Autorizar servicios">
+    Desde la página de homologación, ir a la opción de “Crear Autorizacion a Servicio” para acceder al formulario para crear una autorización para que un DN pueda utilizar un servicio representando a un contribuyente.
+    <Steps>
+      <Step title="Nombre simbólico del DN a autorizar">
+         Es el alias o nombre simbólico del DN a autorizar acceso al servicio. Debe haberse creado previamente. Elegir el alias de la listadesplegable.
+      </Step>
+      <Step title="CUIT del DN a autorizar">
+      Es la CUIT del DN existente, que va a ser autorizado a usar el servicio en representación de un contribuyente. Este campo no puede modificarse.
+      </Step>
+      <Step title="CUIT representado">
+       Es la CUIT representada por el DN. Ingresar la CUIT de una persona física o jurídica (empresa).
+      </Step>
+      <Step title="CUIT de quien genera la autorizacion">
+      Es la CUIT de quien genera esta autorización (CUIT autorizante). Este campo tiene automáticamente la CUIT del usuario conectado al WSASS y no puede editarse.
+      </Step>
+      <Step title="Servicio al que desea acceder">
+       Es el nombre del servicio al que el DN será autorizado a acceder, que se elige de la lista de servicios desplegable.
+      </Step>
+      Luego presionar el botón “Crear Autorización de Acceso”.
+    </Steps>
+    <Info>Para más información sobre ingresar las firmas, se puede consultar el manual [WSASS_manual.pdf](https://www.afip.gob.ar/ws/WSASS/WSASS_manual.pdf)</Info>
   </Accordion>
 </AccordionGroup>
 
-### Deploy your changes
+### Levantar el proyecto
 
 <AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="Instalar paquets">
+    Una vez clonado el repositorio, se debe instalar las dependencias necesarias para poder ejecutar el proyecto.
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+    ```bash
+    cd AFIP-API
+    npm install
+    ```
+  </Accordion>
+  <Accordion icon="rocket" title="Arrancar el webservice">
+    Después haber instalado las librerias y tener el certificado pem en la carpeta `keys`, se puede iniciar la aplicación de la siguiente manera
+    <br/>
+    Para desarrollo
+    ```bash
+    HOMO=true node server.js
+    ```
+    <br/>
+    Para producción
+    ```bash
+    node server.js
+    ```
 
+
+  </Accordion>
 </AccordionGroup>
 
-## Update your docs
-
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
-
-<CardGroup>
-
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
-
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
-
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
-
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
-
-</CardGroup>
